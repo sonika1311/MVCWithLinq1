@@ -5,29 +5,37 @@
 
 <h2>AddStudent</h2>
 
-<div>
-    @Html.LabelFor(s=>s.Sid)
-    @Html.TextBoxFor(s=>s.Sid)
-</div>
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(s => s.Sid)<br />
+        @Html.TextBoxFor(s => s.Sid)
+    </div>
 
-<div>
-    @Html.LabelFor(s=>s.Name)
-    @Html.TextBoxFor(s=>s.Name)
-</div>
+    <div>
+        @Html.LabelFor(s => s.Name)<br />
+        @Html.TextBoxFor(s => s.Name)
+    </div>
 
-<div>
-    @Html.LabelFor(s=>s.Class)
-    @Html.TextBoxFor(s=>s.Class)
-</div>
+    <div>
+        @Html.LabelFor(s => s.Class)<br />
+        @Html.TextBoxFor(s => s.Class)
+    </div>
 
-<div>
-    @Html.LabelFor(s=>s.Fees)
-    @Html.TextBoxFor(s=>s.Fees)
-</div>
-
-<div>
-    @Html.LabelFor(s => s.Photo)
-    <input type="file" name="selectedFile"/>
-</div>
-
+    <div>
+        @Html.LabelFor(s => s.Fees)<br />
+        @Html.TextBoxFor(s => s.Fees)
+    </div>
+    <br />
+    <div>
+        @Html.LabelFor(s => s.Photo)
+        <input type="file" name="selectedFile"/>
+    </div>
+    <br />
+    <div>
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset"/>
+    </div>
+}
+@Html.ActionLink("Back to Student Details","DisplayStudents")
 
