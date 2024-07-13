@@ -1,0 +1,39 @@
+﻿@using MVCWithLinq1.Models;
+@model IEnumerable<Student>
+@{
+    ViewBag.Title = "DisplayStudents";
+}
+
+<h2>DisplayStudents</h2>
+<h2 style="text-align:center;background-color:yellowgreen;color:orangered">Student Details</h2>
+<table border="1" align="center" class="table-condensed">
+    <tr>
+        <th>@Html.DisplayNameFor(s => s.Sid)</th>
+        <th>@Html.DisplayNameFor(S => S.Name)</th>
+        <th>@Html.DisplayNameFor(s => s.Class)</th>
+        <th>@Html.DisplayNameFor(s => s.Fees)</th>
+        <th>@Html.DisplayNameFor(s => s.Photo)</th>
+        @*<th>@Html.DisplayNameFor(s=>s.Status)</th>*@
+    </tr>
+
+    @foreach (Student student in Model)
+    {
+        <tr>
+            <td>@student.Sid</td>
+            <td>@student.Name</td>
+            <td>@student.Class</td>
+            <td>@student.Fees</td>
+            <td>
+                <img src='~/Uploads/@student.Photo' width="40" height="25" alt="No Image" />
+            </td>
+            @*<td>@student.Status</td>*@
+            <td>@Html.ActionLink("View", "DisplayStudent", new { Sid = student.Sid })</td>
+            <td>@Html.ActionLink("Edit", "EditStudent", new { Sid = student.Sid })</td>
+            <td>@Html.ActionLink("Delete", "DeleteStudent", new { Sid = student.Sid }, 
+               new { onclick = "return confirm('Are you sure of deleting the record?')" })
+            </td>
+        </tr>
+    }
+    <tr><td colspan="6" align="center">@Html.ActionLink("Add New Student", "AddStudent")</td></tr>
+</table>
+

@@ -1,0 +1,33 @@
+﻿@model MVCWithLinq1.Models.Student
+@{
+    ViewBag.Title = "AddStudent";
+}
+
+<h2>AddStudent</h2>
+
+<div>
+    @Html.LabelFor(s=>s.Sid)
+    @Html.TextBoxFor(s=>s.Sid)
+</div>
+
+<div>
+    @Html.LabelFor(s=>s.Name)
+    @Html.TextBoxFor(s=>s.Name)
+</div>
+
+<div>
+    @Html.LabelFor(s=>s.Class)
+    @Html.TextBoxFor(s=>s.Class)
+</div>
+
+<div>
+    @Html.LabelFor(s=>s.Fees)
+    @Html.TextBoxFor(s=>s.Fees)
+</div>
+
+<div>
+    @Html.LabelFor(s => s.Photo)
+    <input type="file" name="selectedFile"/>
+</div>
+
+

@@ -1,0 +1,30 @@
+﻿@using MVCWithLinq1.Models;
+@model Student
+@{
+    ViewBag.Title = "DisplayStudent";
+}
+
+<h2>DisplayStudent</h2>
+<table border="1" align="center">
+    <tr>
+        <td>@Html.DisplayNameFor(s => s.Sid)</td>
+        <td>@Html.DisplayNameFor(s => s.Name)</td>
+        <td>@Html.DisplayNameFor(s => s.Class)</td>
+        <td>@Html.DisplayNameFor(s => s.Fees)</td>
+        <td>@Html.DisplayNameFor(s => s.Photo)</td>
+    </tr>
+    <tr>
+        <td>@Model.Sid</td>
+        <td>@Model.Name</td>
+        <td>@Model.Class</td>
+        <td>@Model.Fees</td>
+        <td>
+            <img src='~/Uploads/@Model.Photo' width="40" height="25" alt="No Image"/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6" align="center">@Html.ActionLink("Back to Student Details","DisplayStudents")</td>
+    </tr>
+
+</table>
+
