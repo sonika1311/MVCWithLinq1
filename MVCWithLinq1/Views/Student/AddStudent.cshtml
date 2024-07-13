@@ -5,7 +5,7 @@
 
 <h2>AddStudent</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddStudent", "Student", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
     <div>
         @Html.LabelFor(s => s.Sid)<br />

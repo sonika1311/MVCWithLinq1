@@ -23,5 +23,10 @@ namespace MVCWithLinq1.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public RedirectToRouteResult AddStudent(Student student, HttpPostedFileBase selectedFile)
+        {
+            return RedirectToAction("DisplayStudents");
+        }
     }
 }
