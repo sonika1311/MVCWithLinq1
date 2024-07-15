@@ -7,23 +7,50 @@
 <h2>DisplayStudent</h2>
 <table border="1" align="center">
     <tr>
-        <td>@Html.DisplayNameFor(s => s.Sid)</td>
-        <td>@Html.DisplayNameFor(s => s.Name)</td>
-        <td>@Html.DisplayNameFor(s => s.Class)</td>
-        <td>@Html.DisplayNameFor(s => s.Fees)</td>
-        <td>@Html.DisplayNameFor(s => s.Photo)</td>
-    </tr>
-    <tr>
-        <td>@Model.Sid</td>
-        <td>@Model.Name</td>
-        <td>@Model.Class</td>
-        <td>@Model.Fees</td>
+        <td rowspan="4">
+            <img src='~/Uploads/@Model.Photo' width="400" height="400" alt="No Image" />
+        </td>
         <td>
-            <img src='~/Uploads/@Model.Photo' width="40" height="25" alt="No Image"/>
+            @Html.DisplayNameFor(s => s.Sid) : @Model.Sid
         </td>
     </tr>
     <tr>
-        <td colspan="6" align="center">@Html.ActionLink("Back to Student Details","DisplayStudents")</td>
+        <td>
+            @Html.DisplayNameFor(s => s.Name) : @Model.Name
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(s => s.Class) : @Model.Class
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(s => s.Fees) : @Model.Fees
+        </td>
+    </tr>
+
+
+
+
+    @*<tr>
+            <td>@Html.DisplayNameFor(s => s.Sid)</td>
+            <td>@Html.DisplayNameFor(s => s.Name)</td>
+            <td>@Html.DisplayNameFor(s => s.Class)</td>
+            <td>@Html.DisplayNameFor(s => s.Fees)</td>
+            <td>@Html.DisplayNameFor(s => s.Photo)</td>
+        </tr>
+        <tr>
+            <td>@Model.Sid</td>
+            <td>@Model.Name</td>
+            <td>@Model.Class</td>
+            <td>@Model.Fees</td>
+            <td>
+                <img src='~/Uploads/@Model.Photo' width="40" height="25" alt="No Image"/>
+            </td>
+        </tr>*@
+    <tr>
+        <td colspan="6" align="center">@Html.ActionLink("Back to Student Details", "DisplayStudents")</td>
     </tr>
 
 </table>
