@@ -38,6 +38,7 @@ namespace MVCWithLinq1.Controllers
                 student.Photo = selectedFile.FileName;
                 student.Status = true;
             }
+            obj.AddStudent(student);
             return RedirectToAction("DisplayStudents");
         }
     }

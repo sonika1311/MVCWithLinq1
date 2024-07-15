@@ -43,5 +43,17 @@ namespace MVCWithLinq1.Models
             }
             return student;
         }
+        public void AddStudent(Student student)
+        {
+            try
+            {
+                context.Students.InsertOnSubmit(student);
+                context.SubmitChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
