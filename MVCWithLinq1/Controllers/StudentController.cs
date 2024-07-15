@@ -10,6 +10,7 @@ namespace MVCWithLinq1.Controllers
 {
     public class StudentController : Controller
     {
+        #region Display
         StudentDAL obj = new StudentDAL();
         public ViewResult DisplayStudents()
         {
@@ -19,6 +20,9 @@ namespace MVCWithLinq1.Controllers
         {
             return View(obj.GetStudent(sid, true));
         }
+        #endregion
+
+        #region AddStudent
         [HttpGet]
         public ViewResult AddStudent()
         {
@@ -41,5 +45,15 @@ namespace MVCWithLinq1.Controllers
             obj.AddStudent(student);
             return RedirectToAction("DisplayStudents");
         }
+        #endregion
+        #region Edit and Update
+        public ViewResult EditStudent(int sid)
+        {
+            //select * from student s where s.sid=103
+            Student student = obj.GetStudent(sid, true);
+            return View(student);
+        }
+        #endregion
+
     }
 }

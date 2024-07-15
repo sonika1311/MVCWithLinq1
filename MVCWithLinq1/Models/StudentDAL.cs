@@ -35,7 +35,14 @@ namespace MVCWithLinq1.Models
             Student student;
             try
             {
-                student = (from s in context.Students where s.Sid == id select s).Single();
+                if (status == null)
+                {
+                    student = (from s in context.Students where s.Sid == id select s).Single();
+                }
+                else
+                {
+                    student = (from s in context.Students where s.Sid==id && status==true select s).Single();
+                }
             }
             catch(Exception ex)
             {
