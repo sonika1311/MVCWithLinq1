@@ -14,7 +14,8 @@ namespace MVCWithLinq1.Controllers
         StudentDAL obj = new StudentDAL();
         public ViewResult DisplayStudents()
         {
-            return View(obj.GetStudents(null));
+            //return View(obj.GetStudents(null)); // for all records
+            return View(obj.GetStudents(true)); // for only active records
         }
         public ViewResult DisplayStudent(int sid)
         {
@@ -40,8 +41,8 @@ namespace MVCWithLinq1.Controllers
                 }
                 selectedFile.SaveAs(directoryPath+selectedFile.FileName);
                 student.Photo = selectedFile.FileName;
-                student.Status = true;
             }
+            student.Status = true;
             obj.AddStudent(student);
             return RedirectToAction("DisplayStudents");
         }
@@ -51,7 +52,28 @@ namespace MVCWithLinq1.Controllers
         {
             //select * from student s where s.sid=103
             Student student = obj.GetStudent(sid, true);
+            TempData["Photo"] = student.Photo;
             return View(student);
+        }
+        public RedirectToRouteResult UpdateStudent(Student updatedStudent, HttpPostedFileBase selectedFile)
+        {
+            //Student updatedStudent;
+            if (selectedFile!=null)
+            {
+                string directoryPath = Server.MapPath("~/Uploads/");
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath); 
+                }
+                selectedFile.SaveAs (directoryPath+selectedFile.FileName);
+                updatedStudent.Photo= selectedFile.FileName;
+            }
+            else if (TempData["Photo"]!=null)
+            {
+                updatedStudent.Photo = TempData["Photo"].ToString();
+            }
+            obj.UpdateStudent(updatedStudent);
+            return RedirectToAction("DisplayStudents");
         }
         #endregion
 

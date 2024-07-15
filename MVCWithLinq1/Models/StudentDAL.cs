@@ -62,5 +62,22 @@ namespace MVCWithLinq1.Models
                 throw ex;
             }
         }
+        public void UpdateStudent(Student updatedStudent)
+        {
+            try
+            {
+                //select * from Student s where s.Sid==updatedStudent.Sid
+                Student student = context.Students.First(s => s.Sid == updatedStudent.Sid);
+                student.Name = updatedStudent.Name;
+                student.Class = updatedStudent.Class;
+                student.Fees = updatedStudent.Fees;
+                student.Photo = updatedStudent.Photo;
+                context.SubmitChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
