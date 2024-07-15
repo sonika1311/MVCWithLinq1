@@ -76,6 +76,13 @@ namespace MVCWithLinq1.Controllers
             return RedirectToAction("DisplayStudents");
         }
         #endregion
+        #region delete
+        public RedirectToRouteResult DeleteStudent(int sid)
+        {
+            obj.DeleteStudent(sid);
+            return RedirectToAction("DisplayStudents");
+        }
+        #endregion
 
     }
 }

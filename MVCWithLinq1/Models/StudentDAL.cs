@@ -79,5 +79,13 @@ namespace MVCWithLinq1.Models
                 throw ex;
             }
         }
+        public void DeleteStudent(int Sid)
+        {
+            Student student = context.Students.First(s => s.Sid == Sid);
+            student.Status = false; //Soft Delete
+            //context.Students.DeleteOnSubmit(student);//permanent deletion
+            context.SubmitChanges();
+            
+        }
     }
 }
